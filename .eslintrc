@@ -1,0 +1,29 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "node": true
+  },
+  "ecmaFeatures": {
+    "experimentalObjectRestSpread": true
+  },
+  "rules": {
+    "semi": [
+      1,
+      "never"
+    ],
+    "arrow-body-style": 0,
+    "space-before-function-paren": 0,
+    "no-use-before-define": 0,
+    "no-unused-expressions": [
+      2,
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "func-names": 0,
+    "comma-dangle": ["error", "only-multiline"],
+    "import/prefer-default-export": 0
+  }
+}
