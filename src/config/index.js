@@ -3,7 +3,8 @@
  * @author jiuhu <jiuhu.zh@gmail.com>
  * @date 2018/11/17
  */
-const port = process.env.npm_config_devport || 3000
+const devPort = process.env.npm_config_devport || 3000
+const devHost = 'localhost'
 
 module.exports = {
   // 构建结果输出目录
@@ -22,9 +23,9 @@ module.exports = {
   supportBrowsers: ['last 2 chrome version', 'last 2 safari version', 'ie >= 10'],
   // webpack dev server默认配置
   devServer: {
-    port,
-    host: 'localhost',
-    getPublicPath: (p = port) => `http://localhost:${p}/dist/`
+    port: devPort,
+    host: devHost,
+    getPublicPath: (host = devHost, port = devPort) => `http://${host}:${port}/dist/`
   },
   // 默认的通用库
   defaultVendor: [

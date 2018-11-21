@@ -1,5 +1,6 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
+const WebpackBar = require('webpackbar')
 const HappyPack = require('happypack')
 const getBabelConfig = require('../babel')
 const { outputPath, filename, defaultVendor } = require('../../config')
@@ -38,6 +39,7 @@ module.exports = function(options) {
       extensions: ['.js', '.json']
     },
     plugins: [
+      new WebpackBar(),
       new webpack.DllPlugin({
         path: resolve(root, outputPath, filename.vendor),
         name: '[name]_[chunkhash]'

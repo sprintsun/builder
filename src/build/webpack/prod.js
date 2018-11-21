@@ -61,16 +61,6 @@ module.exports = function(options) {
       //   threads: 4,
       //   loaders: ['css-loader', 'stylus-loader']
       // }),
-      // new HappyPack({
-      //   id: 'css',
-      //   threads: 4,
-      //   loaders: ['css-loader']
-      // }),
-      // new HappyPack({
-      //   id: 'styl',
-      //   threads: 4,
-      //   loaders: ['css-loader', 'stylus-loader']
-      // }),
       new MiniCssExtractPlugin({
         filename: '[name]_[contenthash].css'
       }),

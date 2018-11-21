@@ -35,16 +35,16 @@ function portIsOccupied (port) {
 }
 
 function startWebpackDevServer (options) {
-  const { host } = devServer
-  return portIsOccupied(devServer.port).then((port) => {
-    const publicPath = devServer.getPublicPath(port)
+  const { devHost = devServer.host } = options
+  return portIsOccupied(devServer.port).then((devPort) => {
+    const publicPath = devServer.getPublicPath(devHost, devPort)
     const webpackConfig = getWebpackConfig({ ...options, publicPath })
-    const devServerConfig = getDevServerConfig({ ...options, port, publicPath })
+    const devServerConfig = getDevServerConfig({ ...options, devPort, publicPath })
     WebpackDevServer.addDevServerEntrypoints(webpackConfig, devServerConfig)
     return new Promise((resolve) => {
       const compiler = webpack(webpackConfig)
       const server = new WebpackDevServer(compiler, devServerConfig)
-      server.listen(port, host, () => {
+      server.listen(devPort, devHost, () => {
         logger.success(`Webpack output is served from ${publicPath}`)
         resolve()
       });

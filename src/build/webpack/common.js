@@ -1,6 +1,7 @@
 const fs = require('fs')
 const { resolve, relative } = require('path')
 const webpack = require('webpack')
+const WebpackBar = require('webpackbar')
 const HappyPack = require('happypack')
 const AssetsPlugin = require('assets-webpack-plugin')
 const getBabelConfig = require('../babel')
@@ -135,6 +136,7 @@ module.exports = function(options) {
       ]
     },
     plugins: [
+      new WebpackBar(),
       new AssetsPlugin({
         filename: filename.assets,
         path: distPath,
